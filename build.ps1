@@ -9,6 +9,9 @@ Param (
     $SkipInit
 )
 
+# To allow access to PowerShellGallery
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+
 if ((Get-PSRepository).PublishLocation -notcontains $env:PUBLISH_URL) {
     $params = @{
         Name                      = $env:PUBLISH_NAME
